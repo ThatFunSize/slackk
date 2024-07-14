@@ -87,6 +87,12 @@ def message_actions():
                                 "value": "turret"
                             }
                         ]
+                    },
+                    {
+                        "label": "Subject",
+                        "type": "select",
+                        "name": "test",
+                        "data_source": "users"
                     }
                 ]
             }
