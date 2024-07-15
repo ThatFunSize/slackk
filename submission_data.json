@@ -1,53 +1,79 @@
 [
-    {
-        "submitting_user": "neset",
-        "selected_users": [
-            [
-                "Robbie Easton"
+    [
+        {
+            "submitting_user": "neset",
+            "selected_users": [
+                [
+                    "Robbie Easton"
+                ],
+                [
+                    "Annie Drennan"
+                ],
+                [
+                    "Max Dillier"
+                ]
             ],
-            [
-                "Annie Drennan"
-            ],
-            [
-                "Max Dillier"
+            "category": "Drivetrain",
+            "what_you_did": "asdf",
+            "what_you_learned": "asdf",
+            "milestone": "No",
+            "files": [
+                {
+                    "file_name": "Untitled(4).png",
+                    "file_type": "png",
+                    "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07BYJUR1BR/untitled_4_.png"
+                },
+                {
+                    "file_name": "united-kingdom-flag.png",
+                    "file_type": "png",
+                    "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD2K0X0T/united-kingdom-flag.png"
+                }
             ]
-        ],
-        "category": "Drivetrain",
-        "what_you_did": "asdf",
-        "what_you_learned": "asdf",
-        "milestone": "No",
-        "files": [
-            {
-                "file_name": "Untitled(4).png",
-                "file_type": "png",
-                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07BYJUR1BR/untitled_4_.png"
-            },
-            {
-                "file_name": "united-kingdom-flag.png",
-                "file_type": "png",
-                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD2K0X0T/united-kingdom-flag.png"
-            }
-        ]
-    },
+        },
+        {
+            "submitting_user": "neset",
+            "selected_users": [
+                [
+                    "Pricey"
+                ],
+                [
+                    "Robbie Easton"
+                ]
+            ],
+            "category": "Turret",
+            "what_you_did": "asdf",
+            "what_you_learned": "asdf",
+            "milestone": "Yes",
+            "files": [
+                {
+                    "file_name": "Untitled(4).png",
+                    "file_type": "png",
+                    "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD6AHU2E/untitled_4_.png"
+                }
+            ]
+        }
+    ],
     {
+        "entry_num": 1,
+        "entry_time": "Sun Jul 14 20:23:41 2024",
         "submitting_user": "neset",
         "selected_users": [
             [
                 "Pricey"
             ],
             [
-                "Robbie Easton"
+                "Max Dillier"
             ]
         ],
-        "category": "Turret",
-        "what_you_did": "asdf",
-        "what_you_learned": "asdf",
+        "category": "Programming",
+        "what_you_did": "sdf",
+        "what_you_learned": "sdf",
         "milestone": "Yes",
         "files": [
             {
-                "file_name": "Untitled(4).png",
+                "file_name": "united-kingdom-flag.png",
                 "file_type": "png",
-                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD6AHU2E/untitled_4_.png"
+                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CAJZL2CV/united-kingdom-flag.png"
             }
         ]
     }

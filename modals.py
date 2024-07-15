@@ -6,6 +6,8 @@ load_dotenv(dotenv_path=env_path)
 
 import json
 import os
+import hickle as hkl
+import datetime
 import requests
 from slack_bolt import App
 from slack_bolt.adapter.flask import SlackRequestHandler
@@ -183,6 +185,15 @@ def handle_view_submission(ack, body, logger, client):
 	user_id = body['user']['id']
 	submitted_data = body['view']['state']['values']
 	
+	# Keeping track of how many entries
+	entry_number = hkl.load('entrys')
+	entry_number += 1
+	hkl.dump(entry_number, 'entrys')
+
+	# Time when entry was submitted
+	entry_time = datetime.datetime.now()
+	entry_time = entry_time.strftime('%c')
+
 	user_response = client.users_info(user=user_id)
 	if user_response['ok']:
 		submitting_user = user_response['user']['real_name']
@@ -208,6 +219,8 @@ def handle_view_submission(ack, body, logger, client):
 	files = submitted_data['input_block_id']['file_input_action_id_1']['files']
 
 	submission_data = {
+		"entry_num": entry_number,
+		"entry_time": entry_time,
 		"submitting_user": submitting_user,
 		"selected_users": user_info,
 		"category": category,
