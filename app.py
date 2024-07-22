@@ -32,6 +32,64 @@ def open_modal(trigger_id, client):
 		"callback_id": "modal-identifier",
 		"submit": {
 			"type": "plain_text",
+			"text": "Next"
+		},
+		"close": {
+			"type": "plain_text",
+			"text": "Cancel"
+		},
+		"title": {
+			"type": "plain_text",
+			"text": "Create New Entry"
+		},
+		"blocks": [ 
+			{
+				"type": "section",
+				"text": {
+					"type": "plain_text",
+					"text": "Choose the category:"
+				},
+				"accessory": {
+					"type": "radio_buttons",
+					"action_id": "category_action_id",
+					"options": [
+						{
+							"value": "mech",
+							"text": {
+								"type": "plain_text",
+								"text": "Mechanical"
+							}
+						},
+						{
+							"value": "prog",
+							"text": {
+								"type": "plain_text",
+								"text": "Programming"
+							}
+						},
+						{
+							"value": "outreach",
+							"text": {
+								"type": "plain_text",
+								"text": "Outreach"
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+	)
+	return res
+
+def mech_modal(trigger_id, client):
+	res = client.views_open(
+		trigger_id=trigger_id,
+	view={
+		"type": "modal",
+		"callback_id": "mech-modal-identifier",
+		"submit": {
+			"type": "plain_text",
 			"text": "Submit"
 		},
 		"close": {
@@ -169,6 +227,68 @@ def open_modal(trigger_id, client):
 	)
 	return res
 
+def prog_modal(trigger_id, client):
+	res = client.views_open(
+		trigger_id=trigger_id,
+	view={
+		"type": "modal",
+		"callback_id": "prog-modal-identifier",
+		"submit": {
+			"type": "plain_text",
+			"text": "Next"
+		},
+		"close": {
+			"type": "plain_text",
+			"text": "Cancel"
+		},
+		"title": {
+			"type": "plain_text",
+			"text": "Create New Entry"
+		},
+		"blocks": [ 
+			{
+				"type": "section",
+				"text": {
+					"type": "plain_text",
+					"text": "prog:"
+				}
+			}
+		]
+	}
+	)
+	return res
+
+def outreach_modal(trigger_id, client):
+	res = client.views_open(
+		trigger_id=trigger_id,
+	view={
+		"type": "modal",
+		"callback_id": "outreach-modal-identifier",
+		"submit": {
+			"type": "plain_text",
+			"text": "Next"
+		},
+		"close": {
+			"type": "plain_text",
+			"text": "Cancel"
+		},
+		"title": {
+			"type": "plain_text",
+			"text": "Create New Entry"
+		},
+		"blocks": [ 
+			{
+				"type": "section",
+				"text": {
+					"type": "plain_text",
+					"text": "outreach"
+				}
+			}
+		]
+	}
+	)
+	return res
+
 @app.command("/en")
 def handle_command(ack, body, logger, client):
 	ack()
@@ -177,7 +297,44 @@ def handle_command(ack, body, logger, client):
 	trigger_id = body["trigger_id"]
 	open_modal(trigger_id, client)
 
+#@app.action("open_next_modal_button")
+#def handle_button_click(ack, body, client, logger):
+#	ack()
+#	trigger_id = body["trigger_id"]
+#	logger.info(body)
+#	print(body)
+#	next_modal(trigger_id, client)
+
+@app.action("category_action_id")
+def handle_some_action(ack, body, logger):
+	ack()
+	logger.info(body)
+
 @app.view("modal-identifier")
+def handle_view_submission_events(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	trigger_id = body["trigger_id"]
+	category = body['view']['state']['values']['yfYF5']['category_action_id']['selected_option']['value']
+	print(category)
+	if category == 'mech':
+		mech_modal(trigger_id, client)
+	elif category == 'prog':
+		prog_modal(trigger_id, client)
+	elif category == 'outreach':
+		outreach_modal(trigger_id, client)
+  
+@app.view("prog-modal-identifier")
+def handle_view_submission(ack, body, logger, client):
+	ack()
+	logger.info(body)
+
+@app.view("outreach-modal-identifier")
+def handle_view_submission(ack, body, logger, client):
+	ack()
+	logger.info(body)
+
+@app.view("mech-modal-identifier")
 def handle_view_submission(ack, body, logger, client):
 	ack()
 	logger.info(body)
