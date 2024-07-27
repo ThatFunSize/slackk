@@ -82,6 +82,116 @@ def open_modal(trigger_id, client):
 	)
 	return res
 
+mech_options = [{
+					"value": "mech",
+					"text": {
+						"type": "plain_text",
+						"text": "Mechanical"
+					}
+				},
+				{
+					"value": "prog",
+					"text": {
+						"type": "plain_text",
+						"text": "Programming"
+					}
+				},
+				{
+					"value": "outreach",
+					"text": {
+						"type": "plain_text",
+						"text": "Outreach"
+					}
+				}]
+
+def mech_categories(trigger_id, client):
+	
+	res = client.views_open(
+		trigger_id=trigger_id,
+	view={
+		"type": "modal",
+		"callback_id": "mech-categories-identifier",
+		"submit": {
+			"type": "plain_text",
+			"text": "Next"
+		},
+		"close": {
+			"type": "plain_text",
+			"text": "Cancel"
+		},
+		"title": {
+			"type": "plain_text",
+			"text": "Create New Entry"
+		},
+		"blocks": [ 
+			{
+				"type": "input",
+				"element": {
+					"type": "static_select",
+					"placeholder": {
+						"type": "plain_text",
+						"text": "Select an item"
+					},
+					"options": mech_options,
+					"action_id": "static_select-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "Choose a category:"
+				}
+			},
+			{
+				"type": "section",
+				"text": {
+					"type": "plain_text",
+					"text": "My category isn't there"
+				},
+				"accessory": {
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "New Category"
+					},
+					"value": "new",
+					"action_id": "button"
+				}
+			}
+		]
+	}
+	)
+	return res
+
+def new_mech_category(view_id, client):
+    res = client.views_update(
+		view_id=view_id,
+	view={
+		"type": "modal",
+		"callback_id": "outreach-modal-identifier",
+		"submit": {
+			"type": "plain_text",
+			"text": "Next"
+		},
+		"close": {
+			"type": "plain_text",
+			"text": "Cancel"
+		},
+		"title": {
+			"type": "plain_text",
+			"text": "Create New Entry"
+		},
+		"blocks": [ 
+			{
+				"type": "section",
+				"text": {
+					"type": "plain_text",
+					"text": "outreach"
+				}
+			}
+		]
+	}
+	)
+    return res
+
 def mech_modal(trigger_id, client):
 	res = client.views_open(
 		trigger_id=trigger_id,
@@ -309,6 +419,13 @@ def handle_command(ack, body, logger, client):
 def handle_some_action(ack, body, logger):
 	ack()
 	logger.info(body)
+ 
+@app.action("button")
+def handle_some_action(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	view_id = body["view"]["id"]
+	new_mech_category(view_id, client)
 
 @app.view("modal-identifier")
 def handle_view_submission_events(ack, body, logger, client):
@@ -318,11 +435,19 @@ def handle_view_submission_events(ack, body, logger, client):
 	category = body['view']['state']['values']['yfYF5']['category_action_id']['selected_option']['value']
 	print(category)
 	if category == 'mech':
-		mech_modal(trigger_id, client)
+		mech_categories(trigger_id, client)
 	elif category == 'prog':
 		prog_modal(trigger_id, client)
 	elif category == 'outreach':
 		outreach_modal(trigger_id, client)
+  
+@app.view("mech-categories-identifier")
+def handle_view_submission(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	trigger_id = body["trigger_id"]
+	print(body['view']['state']['values'])
+	#mech_modal(trigger_id, client)
   
 @app.view("prog-modal-identifier")
 def handle_view_submission(ack, body, logger, client):
