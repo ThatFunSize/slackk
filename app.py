@@ -24,6 +24,11 @@ handler = SlackRequestHandler(app)
 def slack_events():
 	return handler.handle(request)
 
+#       ###   ##     ##
+#     ##  ## ##     ##
+#    ###### ##     ##
+#   ##  ## ###### ######
+
 def open_modal(trigger_id, client):
 	res = client.views_open(
 		trigger_id=trigger_id,
@@ -82,30 +87,16 @@ def open_modal(trigger_id, client):
 	)
 	return res
 
-mech_options = [{
-					"value": "mech",
-					"text": {
-						"type": "plain_text",
-						"text": "Mechanical"
-					}
-				},
-				{
-					"value": "prog",
-					"text": {
-						"type": "plain_text",
-						"text": "Programming"
-					}
-				},
-				{
-					"value": "outreach",
-					"text": {
-						"type": "plain_text",
-						"text": "Outreach"
-					}
-				}]
+
+
+
+#		  MMM    MMM      
+# 		MM  MM MM  MM
+#     MM     MM     MM
+#   MMM              MMM
 
 def mech_categories(trigger_id, client):
-	
+	mech_options = hkl.load('mech_cat')
 	res = client.views_open(
 		trigger_id=trigger_id,
 	view={
@@ -166,7 +157,7 @@ def new_mech_category(view_id, client):
 		view_id=view_id,
 	view={
 		"type": "modal",
-		"callback_id": "outreach-modal-identifier",
+		"callback_id": "n_mech_cat_identifier",
 		"submit": {
 			"type": "plain_text",
 			"text": "Next"
@@ -181,10 +172,14 @@ def new_mech_category(view_id, client):
 		},
 		"blocks": [ 
 			{
-				"type": "section",
-				"text": {
+				"type": "input",
+				"element": {
+					"type": "plain_text_input",
+					"action_id": "plain_text_input-action"
+				},
+				"label": {
 					"type": "plain_text",
-					"text": "outreach"
+					"text": "Enter New Category Below:"
 				}
 			}
 		]
@@ -224,44 +219,6 @@ def mech_modal(trigger_id, client):
 				"label": {
 					"type": "plain_text",
 					"text": "Who Was There?"
-				}
-			},
-			{
-				"type": "input",
-				"element": {
-					"type": "static_select",
-					"placeholder": {
-						"type": "plain_text",
-						"text": "Select an item"
-					},
-					"options": [
-						{
-							"text": {
-								"type": "plain_text",
-								"text": "Drivetrain"
-							},
-							"value": "drivetrain"
-						},
-						{
-							"text": {
-								"type": "plain_text",
-								"text": "Turret"
-							},
-							"value": "turret"
-						},
-						{
-							"text": {
-								"type": "plain_text",
-								"text": "Programming"
-							},
-							"value": "programming"
-						}
-					],
-					"action_id": "static_select-action"
-				},
-				"label": {
-					"type": "plain_text",
-					"text": "Category"
 				}
 			},
 			{
@@ -376,7 +333,7 @@ def outreach_modal(trigger_id, client):
 		"callback_id": "outreach-modal-identifier",
 		"submit": {
 			"type": "plain_text",
-			"text": "Next"
+			"text": "Submit"
 		},
 		"close": {
 			"type": "plain_text",
@@ -384,14 +341,110 @@ def outreach_modal(trigger_id, client):
 		},
 		"title": {
 			"type": "plain_text",
-			"text": "Create New Entry"
+			"text": "New Outreach Event"
 		},
 		"blocks": [ 
+			{
+				"type": "input",
+				"element": {
+					"type": "plain_text_input",
+					"action_id": "plain_text_input-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "What did you do? (One sentence)"
+				}
+			},
+			{
+				"type": "input",
+				"element": {
+					"type": "datepicker",
+					"action_id": "odatepicker",
+					"placeholder": {
+						"type": "plain_text",
+						"text": "What Day?"
+					},
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "Date:"
+				}
+			},
+			{
+				"type": "input",
+				"element": {
+					"type": "number_input",
+					"is_decimal_allowed": True,
+					"action_id": "number_input-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "How Many Hours?"
+				}
+			},
+			{
+				"type": "input",
+				"element": {
+					"type": "number_input",
+					"is_decimal_allowed": False,
+					"action_id": "number_input-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "How Many Members?"
+				}
+			},
+			{
+				"type": "input",
+				"element": {
+					"type": "number_input",
+					"is_decimal_allowed": False,
+					"action_id": "number_input-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "How Many People Affected?"
+				}
+			},
+			{
+				"type": "input",
+				"element": {
+					"type": "radio_buttons",
+					"options": [
+						{
+							"text": {
+								"type": "plain_text",
+								"text": "Outreach in FIRST"
+							},
+							"value": "in_first"
+						},
+						{
+							"text": {
+								"type": "plain_text",
+								"text": "Outreach in the Community"
+							},
+							"value": "in_community"
+						},
+						{
+							"text": {
+								"type": "plain_text",
+								"text": "Outreach in STEM"
+							},
+							"value": "in_stem"
+						}
+					],
+					"action_id": "radio_buttons-action"
+				},
+				"label": {
+					"type": "plain_text",
+					"text": "Category:"
+				}
+			},
 			{
 				"type": "section",
 				"text": {
 					"type": "plain_text",
-					"text": "outreach"
+					"text": "If you have any images, send them to #outreach-pics!"
 				}
 			}
 		]
@@ -399,6 +452,8 @@ def outreach_modal(trigger_id, client):
 	)
 	return res
 
+
+# Command
 @app.command("/en")
 def handle_command(ack, body, logger, client):
 	ack()
@@ -407,25 +462,21 @@ def handle_command(ack, body, logger, client):
 	trigger_id = body["trigger_id"]
 	open_modal(trigger_id, client)
 
-#@app.action("open_next_modal_button")
-#def handle_button_click(ack, body, client, logger):
-#	ack()
-#	trigger_id = body["trigger_id"]
-#	logger.info(body)
-#	print(body)
-#	next_modal(trigger_id, client)
+@app.command("/outreach")
+def handle_command(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	#print(body)
+	trigger_id = body["trigger_id"]
+	outreach_modal(trigger_id, client)
 
+# Button handler
 @app.action("category_action_id")
 def handle_some_action(ack, body, logger):
 	ack()
 	logger.info(body)
  
-@app.action("button")
-def handle_some_action(ack, body, logger, client):
-	ack()
-	logger.info(body)
-	view_id = body["view"]["id"]
-	new_mech_category(view_id, client)
+
 
 @app.view("modal-identifier")
 def handle_view_submission_events(ack, body, logger, client):
@@ -441,24 +492,69 @@ def handle_view_submission_events(ack, body, logger, client):
 	elif category == 'outreach':
 		outreach_modal(trigger_id, client)
   
-@app.view("mech-categories-identifier")
-def handle_view_submission(ack, body, logger, client):
-	ack()
-	logger.info(body)
-	trigger_id = body["trigger_id"]
-	print(body['view']['state']['values'])
-	#mech_modal(trigger_id, client)
-  
+
+
 @app.view("prog-modal-identifier")
 def handle_view_submission(ack, body, logger, client):
 	ack()
 	logger.info(body)
 
+
+
 @app.view("outreach-modal-identifier")
 def handle_view_submission(ack, body, logger, client):
 	ack()
 	logger.info(body)
+ 
+ 
+ 
 
+ 
+#		  MMM    MMM      
+# 		MM  MM MM  MM
+#     MM     MM     MM
+#   MMM              MMM
+
+# Categories
+@app.view("mech-categories-identifier")
+def handle_view_submission(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	trigger_id = body["trigger_id"]
+	global m_category
+	m_category = body['view']['state']['values']['UZa3D']['static_select-action']['selected_option']['value']
+	mech_modal(trigger_id, client)
+
+# New category button
+@app.action("button")
+def handle_some_action(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	view_id = body["view"]["id"]
+	new_mech_category(view_id, client)
+
+# New category function
+@app.view("n_mech_cat_identifier")
+def handle_view_submission(ack, body, logger, client):
+	ack()
+	logger.info(body)
+	trigger_id = body["trigger_id"]
+	new_cat = body['view']['state']['values']['0LKHC']['plain_text_input-action']['value']
+	mech_options = hkl.load('mech_cat')
+	new_value = new_cat.lower()
+	new_label = new_cat.capitalize()
+	new_append = {
+					"value": new_value,
+					"text": {
+						"type": "plain_text",
+						"text": new_label
+					}
+				}
+	mech_options.append(new_append)
+	hkl.dump(mech_options, 'mech_cat')
+	mech_categories(trigger_id, client)
+
+# Entry
 @app.view("mech-modal-identifier")
 def handle_view_submission(ack, body, logger, client):
 	ack()
@@ -466,6 +562,7 @@ def handle_view_submission(ack, body, logger, client):
 	#print(body)
 	user_id = body['user']['id']
 	submitted_data = body['view']['state']['values']
+	print(submitted_data)
 	
 	# Keeping track of how many entries
 	entry_number = hkl.load('entrys')
@@ -494,10 +591,10 @@ def handle_view_submission(ack, body, logger, client):
 				response['user']['real_name']
 			})       
 	
-	category = submitted_data['WYrS1']['static_select-action']['selected_option']['text']['text']
-	what_you_did = submitted_data['NrWG9']['plain_text_input-action']['value']
-	what_you_learned = submitted_data['F8XWy']['plain_text_input-action']['value']
-	milestone = submitted_data['dH9JE']['radio_buttons-action']['selected_option']['text']['text']
+	#category = submitted_data['WYrS1']['static_select-action']['selected_option']['text']['text']
+	what_you_did = submitted_data['owACm']['plain_text_input-action']['value']
+	what_you_learned = submitted_data['P3QSg']['plain_text_input-action']['value']
+	milestone = submitted_data['K/A5J']['radio_buttons-action']['selected_option']['text']['text']
 	files = submitted_data['input_block_id']['file_input_action_id_1']['files']
 
 	submission_data = {
@@ -505,7 +602,7 @@ def handle_view_submission(ack, body, logger, client):
 		"entry_time": entry_time,
 		"submitting_user": submitting_user,
 		"selected_users": user_info,
-		"category": category,
+		"category": m_category,
 		"what_you_did": what_you_did,
 		"what_you_learned": what_you_learned,
 		"milestone": milestone,
@@ -546,20 +643,15 @@ def handle_view_submission(ack, body, logger, client):
 	with open('submission_data.json', 'w') as json_file:
 		json.dump(existing_data, json_file, indent = 4)
 	
-
-
-
-
 	#Print data for debug
-	#submitted_data = body['view']['state']['values']
-	#logger.info(f"User {user} submitted data: {submitted_data}")
-	print(f"Submitted by: {submitting_user}")
-	print(f"Selected Users: {user_info}")
-	print(f"Category: {category}")
-	print(f"What You Did: {what_you_did}")
-	print(f"What You Learned: {what_you_learned}")
-	print(f"Milestone: {milestone}")
+	#print(f"Submitted by: {submitting_user}")
+	#print(f"Selected Users: {user_info}")
+	#print(f"Category: {m_category}")
+	#print(f"What You Did: {what_you_did}")
+	#print(f"What You Learned: {what_you_learned}")
+	#print(f"Milestone: {milestone}")
 	
+
 
 
 # Start your app

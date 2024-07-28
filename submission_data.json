@@ -2,127 +2,153 @@
     [
         [
             [
-                {
-                    "submitting_user": "neset",
-                    "selected_users": [
-                        [
-                            "Robbie Easton"
+                [
+                    {
+                        "submitting_user": "neset",
+                        "selected_users": [
+                            [
+                                "Robbie Easton"
+                            ],
+                            [
+                                "Annie Drennan"
+                            ],
+                            [
+                                "Max Dillier"
+                            ]
                         ],
-                        [
-                            "Annie Drennan"
-                        ],
-                        [
-                            "Max Dillier"
+                        "category": "Drivetrain",
+                        "what_you_did": "asdf",
+                        "what_you_learned": "asdf",
+                        "milestone": "No",
+                        "files": [
+                            {
+                                "file_name": "Untitled(4).png",
+                                "file_type": "png",
+                                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07BYJUR1BR/untitled_4_.png"
+                            },
+                            {
+                                "file_name": "united-kingdom-flag.png",
+                                "file_type": "png",
+                                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD2K0X0T/united-kingdom-flag.png"
+                            }
                         ]
-                    ],
-                    "category": "Drivetrain",
-                    "what_you_did": "asdf",
-                    "what_you_learned": "asdf",
-                    "milestone": "No",
-                    "files": [
-                        {
-                            "file_name": "Untitled(4).png",
-                            "file_type": "png",
-                            "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07BYJUR1BR/untitled_4_.png"
-                        },
-                        {
-                            "file_name": "united-kingdom-flag.png",
-                            "file_type": "png",
-                            "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD2K0X0T/united-kingdom-flag.png"
-                        }
-                    ]
-                },
+                    },
+                    {
+                        "submitting_user": "neset",
+                        "selected_users": [
+                            [
+                                "Pricey"
+                            ],
+                            [
+                                "Robbie Easton"
+                            ]
+                        ],
+                        "category": "Turret",
+                        "what_you_did": "asdf",
+                        "what_you_learned": "asdf",
+                        "milestone": "Yes",
+                        "files": [
+                            {
+                                "file_name": "Untitled(4).png",
+                                "file_type": "png",
+                                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD6AHU2E/untitled_4_.png"
+                            }
+                        ]
+                    }
+                ],
                 {
+                    "entry_num": 1,
+                    "entry_time": "Sun Jul 14 20:23:41 2024",
                     "submitting_user": "neset",
                     "selected_users": [
                         [
                             "Pricey"
                         ],
                         [
-                            "Robbie Easton"
+                            "Max Dillier"
                         ]
                     ],
-                    "category": "Turret",
-                    "what_you_did": "asdf",
-                    "what_you_learned": "asdf",
+                    "category": "Programming",
+                    "what_you_did": "sdf",
+                    "what_you_learned": "sdf",
                     "milestone": "Yes",
                     "files": [
                         {
-                            "file_name": "Untitled(4).png",
+                            "file_name": "united-kingdom-flag.png",
                             "file_type": "png",
-                            "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CD6AHU2E/untitled_4_.png"
+                            "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CAJZL2CV/united-kingdom-flag.png"
                         }
                     ]
                 }
             ],
             {
-                "entry_num": 1,
-                "entry_time": "Sun Jul 14 20:23:41 2024",
-                "submitting_user": "neset",
+                "entry_num": 2,
+                "entry_time": "Thu Jul 18 16:56:21 2024",
+                "submitting_user": "Jonah Wood",
                 "selected_users": [
                     [
-                        "Pricey"
-                    ],
-                    [
-                        "Max Dillier"
+                        "Jonah Wood"
                     ]
                 ],
-                "category": "Programming",
-                "what_you_did": "sdf",
-                "what_you_learned": "sdf",
-                "milestone": "Yes",
+                "category": "Drivetrain",
+                "what_you_did": "i machined one of the plates",
+                "what_you_learned": "how to make prooper g-code for milling, and how to operate a milling mahine",
+                "milestone": "No",
                 "files": [
                     {
-                        "file_name": "united-kingdom-flag.png",
+                        "file_name": "parallel.png",
                         "file_type": "png",
-                        "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CAJZL2CV/united-kingdom-flag.png"
+                        "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CXF8DYVC/parallel.png"
                     }
                 ]
             }
         ],
         {
-            "entry_num": 2,
-            "entry_time": "Thu Jul 18 16:56:21 2024",
-            "submitting_user": "Jonah Wood",
+            "entry_num": 4,
+            "entry_time": "Sun Jul 21 18:51:40 2024",
+            "submitting_user": "neset",
             "selected_users": [
                 [
-                    "Jonah Wood"
+                    "Natalie Talamante"
+                ],
+                [
+                    "Price"
                 ]
             ],
-            "category": "Drivetrain",
-            "what_you_did": "i machined one of the plates",
-            "what_you_learned": "how to make prooper g-code for milling, and how to operate a milling mahine",
-            "milestone": "No",
+            "category": "Turret",
+            "what_you_did": "asd",
+            "what_you_learned": "asdf",
+            "milestone": "Yes",
             "files": [
                 {
-                    "file_name": "parallel.png",
+                    "file_name": "Untitled(4).png",
                     "file_type": "png",
-                    "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07CXF8DYVC/parallel.png"
+                    "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07DAM90R37/untitled_4_.png"
                 }
             ]
         }
     ],
     {
-        "entry_num": 4,
-        "entry_time": "Sun Jul 21 18:51:40 2024",
+        "entry_num": 7,
+        "entry_time": "Sat Jul 27 23:57:08 2024",
         "submitting_user": "neset",
         "selected_users": [
             [
                 "Natalie Talamante"
             ],
             [
-                "Price"
+                "Leah Hammond"
             ]
         ],
-        "category": "Turret",
-        "what_you_did": "asd",
+        "category": "drivetrain",
+        "what_you_did": "asdf",
         "what_you_learned": "asdf",
         "milestone": "Yes",
         "files": [
             {
                 "file_name": "Untitled(4).png",
                 "file_type": "png",
-                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07DAM90R37/untitled_4_.png"
+                "file_url": "https://files.slack.com/files-pri/T070Q364U1Z-F07DYH5UL4X/untitled_4_.png"
             }
         ]
     }
