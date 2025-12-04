@@ -313,3 +313,11 @@ def register_commands(app):
     def handle_outreach_command(ack, body, client):
         ack()
         open_outreach_modal(body["trigger_id"], client)
+
+    @app.command("/summary")
+    def handle_summary_command(ack, body, client):
+        ack()
+        client.chat_postMessage(
+            channel=body["channel_id"],
+            text="FTC Award Summary: https://ftc-resources.firstinspires.org/ftc/archive/2026/event/award-summary"
+        )
